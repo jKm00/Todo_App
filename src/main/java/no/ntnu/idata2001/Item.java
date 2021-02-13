@@ -16,6 +16,8 @@ public class Item
     private final LocalDate creationDate;
     private LocalDate deadline;
     private String author;
+    private boolean checkmark; // false if item is not completed, true if it is
+    //add a flag field
 
     /**
      * Creates an instance of item
@@ -35,6 +37,7 @@ public class Item
         this.deadline = LocalDate.of(Integer.parseInt(deadlineArray[2]), Integer.parseInt(deadlineArray[1]), Integer.parseInt(deadlineArray[0]));
 
         this.author = author;
+        this.checkmark = false;
     }
 
     /**
@@ -85,6 +88,16 @@ public class Item
     public String getAuthor()
     {
         return this.author;
+    }
+
+    /**
+     * Returns the checkmark
+     *
+     * @return {@code true} if item is completed, {@code false} if not
+     */
+    public boolean getCheckmark()
+    {
+        return this.checkmark;
     }
 
     /**
@@ -174,5 +187,20 @@ public class Item
         }
 
         return authorEdited;
+    }
+
+    /**
+     * Changes the checkmark. If it is {@code true} it will be change to {@code false} and vice versa
+     */
+    public void changeCheckmark()
+    {
+        if (this.checkmark == false)
+        {
+            this.checkmark = true;
+        }
+        else if (this.checkmark == true)
+        {
+            this.checkmark = false;
+        }
     }
 }
